@@ -37,7 +37,7 @@ def predict():
         # Preprocess and predict
         processed_review = preprocess_text(review)
         prediction = model.predict(processed_review)[0][0]
-        sentiment = "Negative" if prediction >= 0.5 else "positive"
+        sentiment = "Negative" if prediction <= 0.5 else "positive"
 
         # Return JSON response
         return jsonify({"sentiment": sentiment, "confidence": float(prediction)})
